@@ -1,0 +1,31 @@
+<div class="content">
+  <mat-card fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="left">
+      <mat-form-field>
+        <mat-select (selectionChange)="onSelection()" [(ngModel)]="courseId"
+                    placeholder="Select a Course" >
+          <mat-option>Select a Course</mat-option>
+          <mat-option *ngFor="let course of courses$" [value]="course.id">
+            {{ course.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="How many players?" required [(ngModel)]="numPlayers" (change)="updatePlayersNumber()">
+      </mat-form-field>
+
+      <mat-radio-group *ngIf="courseId != undefined">
+        <div class="tee-type">
+          <span>Select tee type:</span>
+          <div *ngFor="let tee of courseData$; let i=index;"   >
+            <mat-radio-button *ngIf="i < tee.teeBoxes.length" [value]="++1" (change)="updateTee(++i)">{{ tee.teeBoxes[i].teeType }}</mat-radio-button>
+          </div>
+        </div>
+      </mat-radio-group>
+    </div>
+
+    <button class="button" mat-raised-button color="accent" [routerLink]="['/play']">
+      Let's Go!
+    </button>
+  </mat-card>
+</div>

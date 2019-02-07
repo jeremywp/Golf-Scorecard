@@ -1,0 +1,51 @@
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.mat-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.right {
+  display: flex;
+  flex-direction: row;
+}
+
+.left {
+  width: 175px;
+}
+
+.holeScore {
+  width: 50px;
+  text-align: center;
+}
+
+.playerName {
+  width: 175px;
+  padding: 2px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.playerTotal {
+  width: 50px;
+  text-align: center;
+}
+
+button {
+  height: 100px;
+}

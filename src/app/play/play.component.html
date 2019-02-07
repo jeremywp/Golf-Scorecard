@@ -1,0 +1,47 @@
+<mat-card class="score-card">
+
+  <div class="left">
+    <div class="rowName">Hole</div>
+    <div class="rowName">Yardage</div>
+    <div class="rowName">Par</div>
+    <div class="rowName">Handicap</div>
+    <div class="players">
+      <div *ngFor="let player of players; let i = index">
+        <input matInput *ngIf="i < numberOfPlayers" class="playerName" [(ngModel)]="players[i].name"
+               type="text" placeholder="Enter player name" value="{{ players[i].name | namePipe: players }}"
+               (unfocus)="updatePlayerName(i)">
+      </div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="column" *ngFor="let course of courseData$; let j = index">
+      <div class="holeNumber">{{course.hole}}</div>
+      <div class="yardage">{{course.teeBoxes[this.tee].yards}}</div>
+      <div class="par">{{course.teeBoxes[this.tee].par}}</div>
+      <div class="handicap">{{ course.teeBoxes[this.tee].hcp }}</div>
+      <div class="scores" *ngFor="let player of players; let i = index">
+        <input *ngIf="j < 18" [(ngModel)]="players[i].score[j]" type="number" class="holeScore"
+               (change)="addScores(i)">
+      </div>
+    </div>
+    <div class="total">
+      <div class="column">
+        <div class="totalHeader">Total</div>
+        <div class="yardTotal"> {{ totalYards }}</div>
+        <div class="parTotal"> {{ totalPar }}</div>
+        <div class="hcpTotal"> {{ totalHcp }}</div>
+        <div class="playerTotals" *ngFor="let player of players; let i = index">
+          <input class="playerTotal" [(ngModel)]="players[i].total" readonly>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <button mat-raised-button="" color="accent" (click)="saveGame(); saved = !saved;">
+    Save Game
+  </button>
+</mat-card>
+

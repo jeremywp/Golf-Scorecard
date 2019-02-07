@@ -1,0 +1,24 @@
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.mat-card {
+  width: 450px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  height: 100px;
+}
+
+.tee-type {
+  display: flex;
+  flex-direction: column;
+}
+
+
